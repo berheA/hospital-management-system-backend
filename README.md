@@ -1,4 +1,3 @@
-# hospital-management-system-backend
 
 # PROJECT NAME
 # hospital-management-system-backend
