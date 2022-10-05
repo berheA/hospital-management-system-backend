@@ -1,7 +1,7 @@
 # hospital-management-system-backend
 
 # PROJECT NAME
- Satlite Status
+# hospital-management-system-backend
 ## Project Description
 
 descr-----
