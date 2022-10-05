@@ -1,11 +1,9 @@
+
 package com.berheamare.hospitalmanagementsystem.services;
-
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.berheamare.hospitalmanagementsystem.models.Token;
 import com.berheamare.hospitalmanagementsystem.models.User;
-import com.berheamare.hospitalmanagementsystem.models.UserRole;
 import com.berheamare.hospitalmanagementsystem.repositories.EmailSender;
 import com.berheamare.hospitalmanagementsystem.repositories.UserRepository;
 import com.berheamare.hospitalmanagementsystem.validations.EmailValidator;
@@ -40,7 +37,6 @@ public class UserService implements UserDetailsService{
 	private final TokenService tokenService;
 	private final static String USER_NOT_FOUND_MSG=
 			"user with email $s not found";
-	
 	
 	public UserService(UserRepository userRepository, 
 			BCryptPasswordEncoder bCryptPasswordEncoder,
@@ -94,7 +90,7 @@ public class UserService implements UserDetailsService{
 							user);
 		
 		// lets save it
-				tokenService.saveConfirmationToken(confirmationToken);
+				tokenService.saveToken(confirmationToken);
 		//return "it works with signup";
 				// todo send email
 				return token;
@@ -119,9 +115,8 @@ public class UserService implements UserDetailsService{
 					new User(user.getFirstName(),
 								user.getLastName(),
 								user.getEmail(),
-								user.getUsername(),
 								user.getPassword(),
-								UserRole.ADMIN)
+								user.getUserRole())
 					);
 			
 			String link= "http://localhost:8080/api/confirm?token="+ token;
@@ -227,7 +222,5 @@ public class UserService implements UserDetailsService{
 	                "\n" +
 	                "</div></div>";
 	    }
-	 
-	 
 
 }

@@ -6,12 +6,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -28,7 +31,7 @@ import lombok.Setter;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
-@Table()
+@Table
 
 // Implements UserDetails to retrieve the user’s authentication and authorization information
 public class User implements UserDetails {
@@ -39,11 +42,9 @@ public class User implements UserDetails {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String username;
 	private String password;
-
-	@Enumerated(EnumType.STRING)
-	private UserRole userRole;
+   //@Enumerated(EnumType.STRING)
+	private String userRole;
 
 	private Boolean locked = false;
 	private Boolean enabled = false;
@@ -55,14 +56,12 @@ public class User implements UserDetails {
 	public User(String firstname, 
 				String lastname, 
 				String email, 
-				String username,
 				String password, 
-				UserRole userRole) {
+				String userRole) {
 		
 		this.firstName = firstname;
 		this.lastName = lastname;
 		this.email = email;
-		this.username=username;
 		this.password = password;
 		this.userRole = userRole;
 	}
@@ -80,12 +79,14 @@ public class User implements UserDetails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public UserRole getUserRole() {
+	public String getEmail() {
+		return email;
+	}
+	public String getUserRole() {
 		return userRole;
 	}
 
-	public void setUserRole(UserRole userRole) {
+	public void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
 	public String getFirstName() {
@@ -96,10 +97,6 @@ public class User implements UserDetails {
 		this.firstName = firstName;
 	}
 	
-	public String getEmail() {
-		// TODO Auto-generated method stub
-		return email;
-	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -112,7 +109,7 @@ public class User implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 
-		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole);
 
 		return Collections.singletonList(authority);
 	}
@@ -153,13 +150,13 @@ public class User implements UserDetails {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", username=" + username + ", password=" + password + ", userRole=" + userRole + ", locked=" + locked
-				+ ", enabled=" + enabled + "]";
+				+ ", password=" + password + ", userRole=" + userRole + ", locked=" + locked + ", enabled=" + enabled
+				+ "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, enabled, firstName, id, lastName, locked, password, userRole, username);
+		return Objects.hash(email, enabled, firstName, id, lastName, locked, password, userRole);
 	}
 
 	@Override
@@ -174,9 +171,9 @@ public class User implements UserDetails {
 		return Objects.equals(email, other.email) && Objects.equals(enabled, other.enabled)
 				&& Objects.equals(firstName, other.firstName) && Objects.equals(id, other.id)
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(locked, other.locked)
-				&& Objects.equals(password, other.password) && userRole == other.userRole
-				&& Objects.equals(username, other.username);
+				&& Objects.equals(password, other.password) && userRole == other.userRole;
 	}
 
+	
 	
 }

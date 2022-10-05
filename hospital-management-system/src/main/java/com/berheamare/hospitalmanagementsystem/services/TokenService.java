@@ -23,7 +23,7 @@ public class TokenService {
 	}
 	
 	
-	public void saveConfirmationToken(Token token) {
+	public void saveToken(Token token) {
 		tokenRepository.save(token);
 		
 	}
