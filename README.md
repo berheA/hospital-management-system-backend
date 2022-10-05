@@ -3,7 +3,7 @@
 # hospital-management-system-backend
 ## Project Description
 
-descr-----
+describtion
 
 
 ## Front End
