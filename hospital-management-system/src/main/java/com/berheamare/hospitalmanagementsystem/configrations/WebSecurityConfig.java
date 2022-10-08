@@ -3,6 +3,7 @@ package com.berheamare.hospitalmanagementsystem.configrations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,9 +32,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 				.csrf().disable()
 				.authorizeRequests()
-					.antMatchers("/api/r*","/api/c*")
+					.antMatchers("/hms/r*","/hms/c*","/hms/au*")
 					.permitAll()
-					.antMatchers("/api/admin").hasAuthority("ADMIN")
+					.antMatchers("/hms/adminPage").hasAuthority("ADMIN")
 					.and()
 					.formLogin();
 	}
@@ -55,5 +56,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return provider;
 		
 	}
+// Bean for ApplicationManager
+	 @Bean
+   @Override
+   public AuthenticationManager authenticationManagerBean() throws Exception {
+       return super.authenticationManagerBean();
+   }
+
 }
 

@@ -119,7 +119,7 @@ public class UserService implements UserDetailsService{
 								user.getUserRole())
 					);
 			
-			String link= "http://localhost:8080/api/confirm?token="+ token;
+			String link= "http://localhost:8080/hms/confirmToken?token="+ token;
 			emailSender.send(  user.getEmail(), 
 					
 					buildEmail(user.getFirstName(), link));
@@ -224,3 +224,4 @@ public class UserService implements UserDetailsService{
 	    }
 
 }
+ 

@@ -53,18 +53,18 @@ public class User implements UserDetails {
 
 	}
 
-	public User(String firstname, 
-				String lastname, 
+	public User(String firstName, 
+				String lastName, 
 				String email, 
 				String password, 
-				String userRole) {
-		
-		this.firstName = firstname;
-		this.lastName = lastname;
+				String userRole) {		
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.userRole = userRole;
 	}
+	
 
 	
 	public String getLastName() {
