@@ -32,11 +32,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 				.csrf().disable()
 				.authorizeRequests()
-					.antMatchers("/hms/r*","/hms/c*","/hms/au*")
-					.permitAll()
-					.antMatchers("/hms/adminPage").hasAuthority("ADMIN")
-					.and()
-					.formLogin();
+				.anyRequest()
+				.permitAll();
+//					.antMatchers("/**","/hms/c*","/hms/au*")
+//					.permitAll()
+//					.antMatchers("/hms/adminPage").hasAuthority("ADMIN")
+//					.and()
+//					.formLogin();
 	}
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
