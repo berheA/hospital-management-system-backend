@@ -28,8 +28,7 @@ private String medicalCenterCity;
 private String medicalCenterState;
 private String medicalCenterStreetAddress;
 private int medicalCenterZip;
-@OneToMany(targetEntity = SpecialService.class, cascade = CascadeType.ALL)
-private List<SpecialService> specialService;
+private String specialService;
 
 public MedicalCenter() {
 	
@@ -40,7 +39,7 @@ public MedicalCenter(String medicalCenterName,
 		String medicalCenterState, 
 		String medicalCenterStreetAddress,
 		int medicalCenterZip,
-		List<SpecialService> specialService) {
+		String specialService) {
 	
 	this.medicalCenterName = medicalCenterName;
 	this.phone = phone;
@@ -99,10 +98,10 @@ public int getMedicalCenterZip() {
 public void setMedicalCenterZip(int medicalCenterZip) {
 	this.medicalCenterZip = medicalCenterZip;
 }
-public List<SpecialService> getSpecialService() {
+public String getSpecialService() {
 	return specialService;
 }
-public void setSpecialService(List<SpecialService> specialService) {
+public void setSpecialService(String specialService) {
 	this.specialService = specialService;
 }
 

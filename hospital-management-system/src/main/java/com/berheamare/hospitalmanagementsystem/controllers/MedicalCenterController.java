@@ -55,6 +55,7 @@ public class MedicalCenterController {
 		existingMedicalCenter.setMedicalCenterCity(medicalCenter.getMedicalCenterCity());
 		existingMedicalCenter.setMedicalCenterStreetAddress(medicalCenter.getMedicalCenterStreetAddress());
 		existingMedicalCenter.setMedicalCenterZip(medicalCenter.getMedicalCenterZip());
+		existingMedicalCenter.setSpecialService(medicalCenter.getSpecialService());
 		return this.medicalCenterRepository.save(existingMedicalCenter);	
 	}
 	 @DeleteMapping("deleteMedicalCenter/{id}")

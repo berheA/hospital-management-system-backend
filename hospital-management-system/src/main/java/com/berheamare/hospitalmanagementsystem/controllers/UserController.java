@@ -1,6 +1,8 @@
 package com.berheamare.hospitalmanagementsystem.controllers;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +44,11 @@ public class UserController {
 //	}
 
 
-	
+	@GetMapping("/allUsers")
+	public List<User> getAllUsers(){
+		return this.userRepository.findAll();
+		
+	}
 @PostMapping("/createUser")
 	public String register(@RequestBody User request) {
 		

@@ -22,14 +22,14 @@ public class Appointment {
 	private Long appointmentId;
 	private String appointmentDate;
 	private String appointmentStatus;
-	@OneToMany(targetEntity = MedicalCenter.class, cascade = CascadeType.ALL)
-	private List< MedicalCenter> medicalCenter;
+	//@OneToMany(targetEntity = MedicalCenter.class, cascade = CascadeType.ALL)
+	private String medicalCenter;
 	
 	
 	public Appointment() {
 		
 	}
-	public Appointment(String appointmentDate, String appointmentStatus, List<MedicalCenter> medicalCenter) {
+	public Appointment(String appointmentDate, String appointmentStatus, String medicalCenter) {
 		super();
 		this.appointmentDate = appointmentDate;
 		this.appointmentStatus = appointmentStatus;
@@ -53,10 +53,10 @@ public class Appointment {
 	public void setAppointmentStatus(String appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
 	}
-	public List<MedicalCenter> getMedicalCenter() {
+	public String getMedicalCenter() {
 		return medicalCenter;
 	}
-	public void setMedicalCenter(List<MedicalCenter> medicalCenter) {
+	public void setMedicalCenter(String medicalCenter) {
 		this.medicalCenter = medicalCenter;
 	}
 		
