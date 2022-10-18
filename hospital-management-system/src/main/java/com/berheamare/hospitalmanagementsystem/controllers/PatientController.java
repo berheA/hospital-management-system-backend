@@ -46,18 +46,18 @@ import com.berheamare.hospitalmanagementsystem.services.PatientService;
 			public @Valid Patient addPatient(@Valid @RequestBody Patient patient) {
 				
 				String link= "http://localhost:4200/login";
-//				emailSender.send(  patient.getEmail(), 
-//						patientService.buildEmailCreateApptNotification(patient.getPatientFirstName(), link));
-//				
+				emailSender.send(  patient.getEmail(), 
+						patientService.buildEmailCreateApptNotification(patient.getPatientFirstName(), link));
+				
 				return this.patientRepository.save(patient);
 				
 			}
 			@PutMapping("updatePatient/{id}")
 			public Patient updatePatient(@RequestBody Patient patient, @PathVariable("id") Long id) {
 				String link= "http://localhost:4200/login";
-//				emailSender.send(  patient.getEmail(), 
-//						patientService.buildEmailUpdateApptNotification(patient.getPatientFirstName(), link));
-//				
+				emailSender.send(  patient.getEmail(), 
+						patientService.buildEmailUpdateApptNotification(patient.getPatientFirstName(), link));
+				
 				Patient existingPatient=this.patientRepository.findById(id).orElseThrow();
 				existingPatient.setAppointment(patient.getAppointment());
 				return this.patientRepository.save(existingPatient);	
@@ -67,9 +67,9 @@ import com.berheamare.hospitalmanagementsystem.services.PatientService;
 				 
 				 Patient existingPatient=this.patientRepository.findById(id).orElseThrow();
 				 String link= "http://localhost:4200/login";
-//					emailSender.send(  existingPatient.getEmail(), 
-//							patientService.buildEmailDeleteApptNotification(existingPatient.getPatientFirstName(), link));
-//					
+					emailSender.send(  existingPatient.getEmail(), 
+							patientService.buildEmailDeleteApptNotification(existingPatient.getPatientFirstName(), link));
+					
 					this.patientRepository.deleteById(id);
 				
 			 }

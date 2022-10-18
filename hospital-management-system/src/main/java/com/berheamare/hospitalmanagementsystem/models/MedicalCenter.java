@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table
@@ -23,6 +25,8 @@ public class MedicalCenter {
 private Long medicalCenterId;
 private String medicalCenterName;
 private int phone;
+@NotEmpty
+@Email
 private String email;
 private String medicalCenterCity;
 private String medicalCenterState;

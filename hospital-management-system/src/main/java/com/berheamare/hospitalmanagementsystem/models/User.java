@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -41,7 +43,10 @@ public class User implements UserDetails {
 	private Long id;
 	private String firstName;
 	private String lastName;
+	@NotEmpty
+	@Email
 	private String email;
+	@NotEmpty
 	private String password;
    //@Enumerated(EnumType.STRING)
 	private String userRole;

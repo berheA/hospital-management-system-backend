@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 // persists all appointments to enable to track past visits
 
@@ -20,6 +21,7 @@ public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long appointmentId;
+	@NotEmpty
 	private String appointmentDate;
 	private String appointmentStatus;
 	//@OneToMany(targetEntity = MedicalCenter.class, cascade = CascadeType.ALL)
