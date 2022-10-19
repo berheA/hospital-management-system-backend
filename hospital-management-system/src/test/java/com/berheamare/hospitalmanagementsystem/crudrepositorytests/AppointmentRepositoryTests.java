@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -64,8 +63,8 @@ class AppointmentRepositoryTests {
 	@Test
 	@Rollback(false)
 	@Order(4)
-	//first we get the appointment by its email, then update its firstName. 
-	//Then we get the appointment again, and compare the firstName
+	//first we get the appointment by its appointment date, then update its date. 
+	//Then we get the appointment again, and compare the date
 	public void testUpdateAppointment() {
 	    Appointment appointment = repository.findByAppointmentDate("10/19/2022").orElseThrow();
 	    appointment.setAppointmentDate("11/25/2022"); 

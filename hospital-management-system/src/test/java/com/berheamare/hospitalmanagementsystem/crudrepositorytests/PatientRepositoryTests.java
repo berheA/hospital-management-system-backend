@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -81,7 +80,7 @@ class PatientRepositoryTests {
 	@Test
 	@Rollback(false)
 	@Order(4)
-	//first we get the patient by its email, then update its firstName. 
+	//first we get the patient by its id, then update its firstName. 
 	//Then we get the patient again, and compare the firstName
 	public void testUpdatePatient() {
 	    Patient patient = repository.findById(1L).orElseThrow();

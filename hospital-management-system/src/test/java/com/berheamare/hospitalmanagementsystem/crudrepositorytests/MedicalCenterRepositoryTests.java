@@ -2,12 +2,8 @@ package com.berheamare.hospitalmanagementsystem.crudrepositorytests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -71,8 +67,8 @@ class MedicalCenterRepositoryTests {
 	@Test
 	@Rollback(false)
 	@Order(4)
-	//first we get the medicalCenter by its email, then update its firstName. 
-	//Then we get the medicalCenter again, and compare the firstName
+	//first we get the medicalCenter by its id, then update its Name. 
+	//Then we get the medicalCenter again, and compare the Name
 	public void testUpdateMedicalCenter() {
 	    MedicalCenter medicalCenter = repository.findById(1L).orElseThrow();
 	    medicalCenter.setMedicalCenterName("Cascade Hospital"); 
