@@ -13,13 +13,29 @@ describtion
 
 * Spring Data JPA
 * Spring Boot
-* Spring MVC
-* Spring Session
+* Spring Web
+* Spring Validator
+* Spring Mail Sender
+* Spring Security
+* Spring Lombo
 * Log4J
 
 ## Features
-A User can:
-
-* Register
+A Patient can:
+* Create Account.
 * Login/Logout.
-*
+* Make/Reschedule/Cancel Appointment.
+* View Result.
+* Get notified  when any action happened.
+An Admin can:
+* Create Account for the company's staffs.
+* Login/Logout.
+* Add/Change/Cancel Medical Center info.
+A Doctor can:
+* treat assigned patients and make bill.
+* Login/Logout.
+
+A Receptionist can:
+* assign patients to their doctor.
+* manage appointment.
+* Login/Logout.
