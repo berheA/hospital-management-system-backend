@@ -36,7 +36,7 @@ class UserRepositoryTests {
 		
 		User savedUser =repository.save(new User("Ezra", "Williams", 
 				                           "addberhe@gmail.com", 
-				                           "pass", "Instructor"));;
+				                           "pass", "Admin"));;
 	     
 // I use assertThat() method from AssertJ library for more readability than 
 //	using JUnit’s assertion methods		                           
